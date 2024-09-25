@@ -22,18 +22,21 @@ taskForm.addEventListener('submit', function(e) {
 // Evento para marcar o eliminar una tarea
 taskList.addEventListener('click', function(e) {
     if (e.target.classList.contains('delete-task')) {
-        // Eliminar tarea
+        // Eliminar tarea con animación
         const taskItem = e.target.parentElement;
-        removeTaskFromLocalStorage(taskItem.textContent);
-        taskItem.remove();
+        taskItem.classList.add('fade-out');
+        setTimeout(() => {
+            removeTaskFromLocalStorage(taskItem.firstChild.textContent);
+            taskItem.remove();
+        }, 500);  // Esperamos a que termine la animación (0.5s)
     } else {
         // Marcar como completada
         e.target.classList.toggle('completed');
-        updateTaskStatusInLocalStorage(e.target.textContent);
+        updateTaskStatusInLocalStorage(e.target.firstChild.textContent);
     }
 });
 
-// Función para agregar una tarea al DOM
+// Función para agregar una tarea al DOM con animación
 function addTaskToDOM(taskText, completed = false) {
     const li = document.createElement('li');
     li.textContent = taskText;
@@ -41,6 +44,8 @@ function addTaskToDOM(taskText, completed = false) {
     if (completed) {
         li.classList.add('completed');
     }
+
+    li.classList.add('fade-in'); // Aplicamos la animación de entrada
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'X';
