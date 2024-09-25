@@ -92,4 +92,3 @@ function updateTaskStatusInLocalStorage(taskText) {
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
-
