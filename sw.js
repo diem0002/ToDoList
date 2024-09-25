@@ -1,11 +1,11 @@
-// sw.js
 const CACHE_NAME = 'todo-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/manifest.json'
+  '/style.css', // Asegúrate de que este nombre coincida con tu archivo CSS
+  '/main.js', // Asegúrate de que este nombre coincida con tu archivo JavaScript
+  '/manifest.json',
+  '/icons/icono.png' // Asegúrate de que esta ruta sea correcta
 ];
 
 // Instalación del Service Worker y almacenamiento de los recursos en caché

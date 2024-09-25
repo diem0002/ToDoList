@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tareas</title>
-    <link rel="manifest" href="/manifest.json"> <!-- Ruta correcta al manifest -->
+    <link rel="manifest" href="manifest.json"> <!-- Asegúrate de que esta ruta sea correcta -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
         // Registrar el Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js') // Ruta correcta al Service Worker
+                navigator.serviceWorker.register('sw.js') // Ruta correcta al Service Worker
                     .then(registration => {
                         console.log('Service Worker registrado con éxito:', registration);
                     })
