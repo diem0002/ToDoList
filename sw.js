@@ -1,11 +1,11 @@
 const CACHE_NAME = 'todo-cache-v1';
 const urlsToCache = [
   '/',
-  '/ToDoList/index.html',
-  '/ToDoList/style.css',
-  '/ToDoList/main.js',
-  '/ToDoList/manifest.json',
-  '/ToDoList/icons/icono.png'
+  '/index.html',
+  '/style.css', // Asegúrate de que este nombre coincida con tu archivo CSS
+  '/main.js', // Asegúrate de que este nombre coincida con tu archivo JavaScript
+  '/manifest.json',
+  '/icons/icono.png' // Asegúrate de que esta ruta sea correcta
 ];
 
 // Instalación del Service Worker y almacenamiento de los recursos en caché
@@ -13,16 +13,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        return cache.addAll(urlsToCache)
-          .catch(err => {
-            console.error('Error al agregar recursos a la caché:', err);
-            // Puedes listar los recursos que fallaron si es necesario
-            urlsToCache.forEach(url => {
-              fetch(url).catch(fetchError => {
-                console.error(`Error al intentar obtener ${url}:`, fetchError);
-              });
-            });
-          });
+        return cache.addAll(urlsToCache);
       })
   );
 });
